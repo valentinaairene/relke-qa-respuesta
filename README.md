@@ -33,38 +33,6 @@ npx playwright test
 Para abrir la interfaz de usuario de Playwright y depurar paso a paso:
 npx playwright test --ui
 
-Claro, aquí tienes el README.md adaptado con la URL de tu repositorio.
-
-Desafío Técnico - QA Engineer Junior (Solución)
-Este repositorio contiene la solución al desafío técnico para el rol de QA Engineer Junior en Relke. El objetivo fue desarrollar un script de automatización End-to-End (E2E) para el flujo de creación de una Nota de Venta utilizando Playwright con TypeScript.
-
-🚀 Cómo Ejecutar la Prueba
-Para ejecutar el test, sigue estos pasos desde tu terminal:
-
-Clonar el repositorio:
-
-git clone https://github.com/valentinaairene/relke-qa-respuesta.git
-cd relke-qa-respuesta
-
-Instalar dependencias:
-Asegúrate de tener Node.js instalado.
-npm install
-
-Instalar los navegadores de Playwright:
-Este comando descarga los navegadores necesarios (Chromium, Firefox, WebKit).
-npx playwright install
-
-Ejecutar la prueba:
-
-Para ver la ejecución en una ventana de navegador (modo headed):
-npx playwright test --headed
-
-Para ejecutarla en segundo plano (modo headless):
-npx playwright test
-
-Para abrir la interfaz de usuario de Playwright y depurar paso a paso:
-npx playwright test --ui
-
 ✅ Validaciones Implementadas
 
 El script realiza las siguientes validaciones clave para asegurar el correcto funcionamiento del flujo:
