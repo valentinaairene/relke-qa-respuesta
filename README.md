@@ -5,7 +5,7 @@ Este repositorio contiene la solución al desafío técnico para el rol de QA En
 
 🚀 Cómo Ejecutar la Prueba
 Para ejecutar el test, sigue estos pasos desde tu terminal:
-(todo está en la rama "valentinaairene")
+(todo está en la rama "valentinabeltran")
 
 Clonar el repositorio:
 
