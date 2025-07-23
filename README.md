@@ -1,114 +1,55 @@
-# 🧪 QA Playwright Challenge – Relke
+# relke-qa-respuesta
 
-¡Bienvenido/a! Este es el desafío técnico para el proceso de selección de **QA Engineer Junior** en Relke 🚀
+Desafío Técnico - QA Engineer Junior (Solución)
+Este repositorio contiene la solución al desafío técnico para el rol de QA Engineer Junior en Relke. El objetivo fue desarrollar un script de automatización End-to-End (E2E) para el flujo de creación de una Nota de Venta utilizando Playwright con TypeScript.
 
----
+🚀 Cómo Ejecutar la Prueba
+Para ejecutar el test, sigue estos pasos desde tu terminal:
+(todo está en la rama "valentinabeltran")
 
-## 🤔 ¿Qué buscamos?
+Clonar el repositorio:
 
-En Relke creemos en el crecimiento desde el aprendizaje. Este desafío no busca medir cuántos años de experiencia tienes, sino **cómo aplicas tus conocimientos actuales, tu motivación por aprender y tu capacidad para enfrentar un flujo real de automatización**.
+git clone https://github.com/valentinaairene/relke-qa-respuesta.git
+cd relke-qa-respuesta
 
-> 🧩 **No es excluyente si tienes menos de 1 año de experiencia.** Si estás recién egresado/a o en tus primeras experiencias laborales, ¡también puedes participar!
+Instalar dependencias:
+Asegúrate de tener Node.js instalado.
 
-Lo importante es que, con tu formación académica y dedicación, **puedas resolver este reto en un tiempo realista (48 horas)** y mostrar cómo piensas como QA.
+npm install
 
----
+Instalar los navegadores de Playwright:
+Este comando descarga los navegadores necesarios (Chromium, Firefox, WebKit).
 
-## 🎯 Desafío
+npx playwright install
 
-Tu misión es automatizar con Playwright el flujo de **creación de una Nota de Venta** en nuestro sistema demo:
+Ejecutar la prueba:
 
-- 🌐 URL: [https://demo.relbase.cl](https://demo.relbase.cl)
-- 👤 Usuario: `qa_junior@relke.cl`
-- 🔐 Contraseña: `Demo123456!`
+Para ver la ejecución en una ventana de navegador (modo headed):
+npx playwright test --headed
 
-### Pasos mínimos esperados
+Para ejecutarla en segundo plano (modo headless):
+npx playwright test
 
-1. Iniciar sesión
-2. Ir a **Ventas > Notas de Venta**
-3. Hacer clic en **Crear nueva nota**
-4. Completar los datos mínimos:
-   - Seleccionar sucursal (Casa matriz)
-   - Seleccionar bodega (Principal)
-   - Seleccionar un cliente (⚠️ puede variar el nombre)
-   - Seleccionar moneda (Pesos)
-   - Agregar al menos un producto
-   - Validar que se calcula un total
-5. Guardar y verificar que aparece en el listado con el total correcto
+Para abrir la interfaz de usuario de Playwright y depurar paso a paso:
+npx playwright test --ui
 
----
+✅ Validaciones Implementadas
 
-## 💡 Reglas y condiciones especiales
+El script realiza las siguientes validaciones clave para asegurar el correcto funcionamiento del flujo:
 
-- El total debe ser **mayor a $0** y reflejar el precio del producto agregado.
-- Evita usar esperas estáticas (`waitForTimeout`). Usa selectores confiables y `await expect(...)`.
-- Puedes usar Page Object Model si lo prefieres, pero no es obligatorio.
+Autenticación Exitosa: Se verifica que, tras ingresar las credenciales correctas, el usuario es redirigido al dashboard principal, esperando por el mensaje de "Te damos la bienvenida".
 
----
+Navegación Correcta: Se valida que cada paso de la navegación (Menú Ventas -> Notas de Venta -> Formulario de Creación) lleve a la URL esperada (/dtes/notas-venta/new).
 
-## 📤 ¿Cómo entregar tu prueba en GitHub?
+Carga de Datos Dependientes: Después de seleccionar un producto, el script implementa una espera inteligente para confirmar que la aplicación carga automáticamente el precio del producto antes de continuar.
 
-Como el repositorio original de Relke en Bitbucket es público pero de solo lectura, te pedimos que:
+Cálculo de Total: Se verifica que, tras ingresar la cantidad, el campo "Total" se actualiza y su valor es diferente de "$0".
 
-1. Clones este repo:
-   ```bash
-   git clone https://bitbucket.org/relke/relke-qa-challenge.git
-   cd relke-qa-challenge
-   ```
+Creación Exitosa: Al enviar el formulario, se valida la aparición de la notificación de éxito (Nota de venta creada correctamente).
 
-2. Crees un nuevo repositorio en **tu cuenta personal de GitHub** (puede ser público o privado).
+Persistencia de Datos: Finalmente, el script vuelve a la página del listado y verifica que la nueva nota de venta aparece correctamente en la tabla, utilizando un identificador único (el número de la nota) para asegurar que se está validando el registro correcto.
 
-3. Cambies el origen remoto en tu entorno local:
-   ```bash
-   git remote remove origin
-   git remote add origin https://github.com/tu_usuario/relke-qa-respuesta.git
-   git push -u origin main
-   ```
-4. Agrega tus pruebas automatizadas dentro de la carpeta `tests/`
+🧠 Desafíos y Decisiones Técnicas
+Como estoy dando mis primeros pasos en el mundo de la automatización, este desafío fue una gran oportunidad para aprender. Para resolver los problemas que surgieron, como los selectores dinámicos y los tiempos de carga de la página, me apoyé en herramientas de investigación (incluyendo IA) para guiar mi análisis.
 
-5. Crea un `README` dentro de tu repositorio explicando:
-   - Cómo ejecutar tu test
-   - Qué validaciones hiciste
-   - Qué desafíos tuviste o decisiones tomaste
-
-6. Haz commit y push 
-
-7. Comparte el link del repositorio (y acceso si es privado) por mensaje de Get on board de la postulación
-
-> Si no tienes cuenta en GitHub, puedes crear una gratuita en https://github.com
-
----
-
-## 📽️ Opcional: muestra tu forma de trabajar
-
-Si quieres destacarte, puedes grabar un video (máx 10 min) mostrando cómo trabajaste el desafío: tus pasos, pruebas, validaciones o errores encontrados.
-
----
-
-## 🧩 Bonus (opcional)
-
-Puedes agregar validaciones extra como:
-
-- Prueba negativa: ¿qué pasa si no agrego productos?
-- Validación de error de campo requerido
-- Automatización de logout o expiración de sesión
-
----
-
-## ⏱️ Tiempo estimado
-
-Tienes **48 horas** desde que recibes esta pauta.
-
----
-
-## 🧠 Consejos
-
-- Usa `npx playwright codegen` si necesitas inspiración, pero asegúrate de entender y limpiar el código generado.
-- Lee los selectores con cuidado. A veces un texto cambia según el estado.
-- Escribe como si tu test fuera a mantenerse en producción.
-- No estamos buscando perfección, sino **compromiso, criterio y capacidad de automatizar flujos funcionales reales**.
-
----
-
-¡Mucho éxito! 💥  
-Relke QA Team
+Aunque fue un proceso que me hizo "cranear" bastante, resultó ser muy entretenido y me ayudó a entender a fondo cada línea de código. La solución final es el reflejo de ese proceso de investigación, prueba y, sobre todo, aprendizaje.
